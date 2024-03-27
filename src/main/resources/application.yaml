@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: test
+  data:
+    rest:
+      base-path: '/api'
+  mail:
+    host: 'sandbox.smtp.mailtrap.io'
+    username: 'ed7fa305304316'
+    password: 'cc743f0701049f'
+    port: 587
+    properties:
+      mail: debug
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+  freemarker:
+    template-loader-path: 'classpath:/templates'
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/ars_app'
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
